@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 public class Main {
 
@@ -34,5 +35,28 @@ public class Main {
 
         if(a2 == a3)
             System.out.println("a2 & a3 reference the same array");
+
+        System.out.println("--------  TREE SET  -------------");
+
+        TreeSet<MyClass> tree = new TreeSet<>();
+        tree.add(new MyClass("2222", "ghi"));
+        tree.add(new MyClass("3333","abc"));
+        tree.add(new MyClass("1111", "def"));
+
+        tree.forEach(m -> System.out.println(m));
+
+        System.out.println("--------  TREE SET using Comparator -------------");
+
+        TreeSet<MyClass> tree2 = new TreeSet<>(new MyComparator());
+        tree2.add(new MyClass("2222", "ghi"));
+        tree2.add(new MyClass("3333","abc"));
+        tree2.add(new MyClass("1111", "def"));
+        tree2.forEach(m -> System.out.println(m));
+
+
+
+
+
+
     }
 }

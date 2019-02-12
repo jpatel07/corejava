@@ -1,6 +1,6 @@
 package com.company;
 
-public class MyClass {
+public class MyClass implements  Comparable<MyClass>{
     String label, value;
 
     public MyClass(String label, String value) {
@@ -17,9 +17,17 @@ public class MyClass {
     }
 
     @Override
+    public String toString() {
+        return  label + " | " + value;
+    }
+    @Override
     public boolean equals(Object o) {
         MyClass other = (MyClass) o;
         return value.equalsIgnoreCase(other.value);
     }
 
+    @Override
+    public int compareTo(MyClass o) {
+        return  value.compareToIgnoreCase(o.value);
+    }
 }

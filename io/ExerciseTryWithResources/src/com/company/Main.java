@@ -1,8 +1,12 @@
 package com.company;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
+import java.rmi.server.ExportException;
 
 public class Main {
 
@@ -14,6 +18,7 @@ public class Main {
          //doTryWithResources();
         //doTryWithResourcesMulti();
         doCloseThing();
+        depecratedFileWrite();
     }
 
     public static void doTryCatchFinally() {
@@ -86,6 +91,27 @@ public class Main {
             for(Throwable t:e.getSuppressed()) {
                 System.out.println("Suppressed: " + t.getMessage());
             }
+        }
+    }
+
+    private static void depecratedFileWrite(){
+
+        String[] data =  {
+            "Line 1",
+            "Line 1 2",
+            "Line 1 2 3",
+            "Line Last"
+        };
+
+        try(BufferedWriter bw =
+                new BufferedWriter((new FileWriter("data.txt")))) {
+
+            for(String d:data) {
+                bw.write(d);
+                bw.newLine();
+            }
+        } catch (Exception ex) {
+            System.out.println("Exceptoin: " + ex.getMessage());
         }
     }
 
